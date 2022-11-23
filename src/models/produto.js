@@ -22,7 +22,7 @@ Product.init(
     },
     ActualizationDate: {
       type: sequelize.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   },
   { sequelize: database, modelName: "tbProduct", schema }

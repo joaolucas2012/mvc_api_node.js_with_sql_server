@@ -1,17 +1,24 @@
-require("dotenv").config();
-const sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
-const database = new sequelize(
+const database = new Sequelize(
   "dbprodutosmvc",
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
+  "DATABASE_USERNAME",
+  "DATABASE_PASSWORD",
   {
+    host: "DATABASE_HOST",
+    port: "DATABASE_PORT",
     dialect: "mssql",
-    host: process.env.SERVER_HOST,
-    port: process.env.SERVER_PORT,
   }
 );
 
-database.sync();
+database.sync().then(
+  function () {
+    console.log("DB connection sucessful.");
+  },
+  function (err) {
+    // catch error here
+    console.log(err);
+  }
+);
 
 module.exports = database;

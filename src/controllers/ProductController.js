@@ -1,4 +1,3 @@
-const { col } = require("sequelize");
 const ModelProduct = require("../models/produto.js");
 
 module.exports = {
